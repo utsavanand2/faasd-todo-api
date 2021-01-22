@@ -1,0 +1,11 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://192.168.64.2:8080
+functions:
+  faas-psql:
+    lang: golang-middleware
+    handler: ./faas-todo
+    image: utsavanand2/faas-todo:latest
+    environment:
+      DATABASE_URL: "host=10.62.0.211 port=5432 user=postgres password=449d0dcc926e679c041e892e8616cabd024bb72b dbname=postgres sslmode=disable"
