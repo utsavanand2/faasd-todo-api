@@ -52,7 +52,9 @@ func insert(todo Todo) error {
 }
 
 func Handle(w http.ResponseWriter, r *http.Request) {
-	db, err := sqlx.Connect("postgres", os.Getenv("DATABASE_URL"))
+	password, _ := ioutil.ReadFile("/var/openfaas/secrets/postgres-passwd")
+	databaseURL := fmt.Sprintf("host=%s port=%s user=postgres password=%s dbname=postgres sslmode=disable", os.Getenv("HOST"), os.Getenv("PORT"), password)
+	db, err := sqlx.Connect("postgres", databaseURL)
 	if err != nil {
 		log.Fatalln(err)
 	}
