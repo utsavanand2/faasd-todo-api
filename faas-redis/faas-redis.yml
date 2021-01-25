@@ -1,11 +1,11 @@
 version: 1.0
 provider:
   name: openfaas
-  gateway: http://192.168.64.2:8080
+  gateway: http://142.93.222.75:8080
 functions:
   faas-redis:
     lang: golang-middleware
     handler: ./faas-redis
     image: utsavanand2/faas-redis:latest
     environment:
-      REDIS_ADDR: "10.62.1.28:6379"
+      REDIS_ADDR: "redis:6379"

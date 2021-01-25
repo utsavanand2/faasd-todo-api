@@ -8,7 +8,7 @@ functions:
     handler: ./faas-mongo
     image: utsavanand2/faas-mongo:latest
     environment:
-      MONGO_URI: "mongodb://10.62.0.69:27017"
+      MONGO_URI: "mongodb://mongodb:27017"
     secrets:
       - mongo-passwd
       - mongo-user
